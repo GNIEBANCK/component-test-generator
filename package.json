@@ -1,0 +1,26 @@
+{
+  "name": "component-test-generator",
+  "version": "1.0.0",
+  "description": "tool for creating component tests for use with apiunit",
+  "main": "generate.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GNIEBANCK/component-test-generator.git"
+  },
+  "author": "Gregory Niebanck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GNIEBANCK/component-test-generator/issues"
+  },
+  "homepage": "https://github.com/GNIEBANCK/component-test-generator#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.8",
+    "json2xls": "^0.1.2",
+    "@types/node": "^10.14.6",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.4.5"
+  }
+}
