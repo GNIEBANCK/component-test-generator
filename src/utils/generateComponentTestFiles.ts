@@ -74,6 +74,7 @@ export async function generateComponentTestFiles()
             await io.toPlainTextFile(requestString,'../../requests/'+s+c +'.req');
             let responseString = responsifyer.getResponse(ResponseType.NO_DATA);
             if(c.endsWith('403')) responseString = responsifyer.getResponse(ResponseType.UNAUTHORIZED);
+            else if (c.endsWith('400')) responseString = responsifyer.getResponse(ResponseType.SCHEMA_ERROR);
             else if (c.endsWith('404')) responseString = responsifyer.getResponse(ResponseType.NOT_FOUND,[<IReplacement>{variable:"[[entity]]",value:secondWord.charAt(0).toLocaleUpperCase()+secondWord.substr(1)}]);
             else if (firstWord === 'list') responseString = responsifyer.getResponse(ResponseType.PAGE_DATA);
             else if (method === 'GET') responseString = responsifyer.getResponse(ResponseType.SINGLE_ITEM_DATA);  

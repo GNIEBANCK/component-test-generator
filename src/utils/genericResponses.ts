@@ -7,6 +7,7 @@ export enum ResponseType{
     LIST_DATA = "list_data",
     PAGE_DATA = "page_data",
     NOT_FOUND = "not_found",
+    POST = "post",
     SCHEMA_ERROR = "schema_error"
 }
 
@@ -29,7 +30,9 @@ export class ApiUnitResponseGenerator
         this.privateResponse.set(ResponseType.LIST_DATA,listResponse);
         this.privateResponse.set(ResponseType.PAGE_DATA,pageResponse);
         this.privateResponse.set(ResponseType.NOT_FOUND,notFoundResponse);
+        this.privateResponse.set(ResponseType.POST,createResponse);
         this.privateResponse.set(ResponseType.SCHEMA_ERROR,schemaErrorResponse)
+
 
     }
     public getResponse(type:ResponseType,replacesments:IReplacement[]=[])
@@ -93,6 +96,12 @@ var pageResponse = '200' + '\n'
 + '\t"nextPageToken": "",' + '\n' 
 + '\t"items":[]' + '\n' 
 + '}'
+
+var createResponse = '204' + '\n' 
++ 'content-type: application/json' + '\n\n'
++ '{'  + '\n' 
++ '\t"id": ".*",' + '\n' 
++ '}';
 
 var schemaErrorResponse = '400' + '\n' 
 + 'content-type: application/json' + '\n\n'
