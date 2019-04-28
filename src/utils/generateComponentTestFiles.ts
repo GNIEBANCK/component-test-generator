@@ -76,7 +76,8 @@ export async function generateComponentTestFiles()
             if(c.endsWith('403')) responseString = responsifyer.getResponse(ResponseType.UNAUTHORIZED);
             else if (c.endsWith('404')) responseString = responsifyer.getResponse(ResponseType.NOT_FOUND,[<IReplacement>{variable:"[[entity]]",value:secondWord.charAt(0).toLocaleUpperCase()+secondWord.substr(1)}]);
             else if (firstWord === 'list') responseString = responsifyer.getResponse(ResponseType.PAGE_DATA);
-            else if (method === 'POST' || method === 'GET') responseString = responsifyer.getResponse(ResponseType.SINGLE_ITEM_DATA);            
+            else if (method === 'GET') responseString = responsifyer.getResponse(ResponseType.SINGLE_ITEM_DATA);  
+            else if (method === 'POST') responseString = responsifyer.getResponse(ResponseType.POST);          
             await io.toPlainTextFile(responseString,'../../responses/'+s+c +'.resp');
         }
     }
