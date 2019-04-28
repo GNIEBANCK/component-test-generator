@@ -91,10 +91,3 @@ var pageResponse = '200' + '\n'
 + '\t"nextPageToken": "",' + '\n' 
 + '\t"items":[]' + '\n' 
 + '}'
-
-// Just wanting to var you know a few things
- // - I was saddened to hear that you do not feel supported by certain members of the team.
- // - your dedication to VACR is apparent: 
- // - as such, I trust your judgement:
- // - I value your guidance: 
- 
