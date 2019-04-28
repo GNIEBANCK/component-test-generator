@@ -6,7 +6,8 @@ export enum ResponseType{
     SINGLE_ITEM_DATA = "single_item_data",
     LIST_DATA = "list_data",
     PAGE_DATA = "page_data",
-    NOT_FOUND = "not_found"
+    NOT_FOUND = "not_found",
+    POST = "post"
 }
 
 export interface IReplacement
@@ -28,7 +29,7 @@ export class ApiUnitResponseGenerator
         this.privateResponse.set(ResponseType.LIST_DATA,listResponse);
         this.privateResponse.set(ResponseType.PAGE_DATA,pageResponse);
         this.privateResponse.set(ResponseType.NOT_FOUND,notFoundResponse);
-
+        this.privateResponse.set(ResponseType.POST,createResponse);
     }
     public getResponse(type:ResponseType,replacesments:IReplacement[]=[])
     {
@@ -90,4 +91,10 @@ var pageResponse = '200' + '\n'
 + '{'  + '\n' 
 + '\t"nextPageToken": "",' + '\n' 
 + '\t"items":[]' + '\n' 
++ '}'
+
+var createResponse = '204' + '\n' 
++ 'content-type: application/json' + '\n\n'
++ '{'  + '\n' 
++ '\t"id": ".*",' + '\n' 
 + '}'
