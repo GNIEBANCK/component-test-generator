@@ -15,11 +15,15 @@
   "bugs": {
     "url": "https://github.com/GNIEBANCK/component-test-generator/issues"
   },
+  "scripts":{
+    "generate":"ts-node ./src/generate.ts"
+  },
   "homepage": "https://github.com/GNIEBANCK/component-test-generator#readme",
   "dependencies": {
+    "@types/node": "^10.14.6",
+    "commander": "^2.20.0",
     "csvtojson": "^2.0.8",
     "json2xls": "^0.1.2",
-    "@types/node": "^10.14.6",
     "ts-node": "^7.0.1",
     "typescript": "^3.4.5"
   }

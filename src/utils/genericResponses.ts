@@ -8,7 +8,14 @@ export enum ResponseType{
     PAGE_DATA = "page_data",
     NOT_FOUND = "not_found",
     POST = "post",
-    SCHEMA_ERROR = "schema_error"
+    SCHEMA_ERROR = "schema_error",
+    CONFLICT = "conflict_error"
+}
+
+export enum supportedReplacementStrings
+{
+    CONFLICT = "[[conflictMessage]]",
+    ENTITY = "[[entity]]"
 }
 
 export interface IReplacement
@@ -31,10 +38,10 @@ export class ApiUnitResponseGenerator
         this.privateResponse.set(ResponseType.PAGE_DATA,pageResponse);
         this.privateResponse.set(ResponseType.NOT_FOUND,notFoundResponse);
         this.privateResponse.set(ResponseType.POST,createResponse);
-        this.privateResponse.set(ResponseType.SCHEMA_ERROR,schemaErrorResponse)
-
-
+        this.privateResponse.set(ResponseType.SCHEMA_ERROR,schemaErrorResponse);
+        this.privateResponse.set(ResponseType.CONFLICT, conflictResponse)
     }
+
     public getResponse(type:ResponseType,replacesments:IReplacement[]=[])
     {
         return this.plugInVariables(this.privateResponse.get(type),replacesments);
@@ -108,6 +115,14 @@ var schemaErrorResponse = '400' + '\n'
 + '{'  + '\n' 
 + '\t"statusCode":400' + ',\n' 
 + '\t"message":"data should NOT have additional properties"' + ',\n' 
++ '\t"details":"[\\\\s\\\\S]*"' + '\n' 
++ '}'
+
+var conflictResponse = '409' + '\n' 
++ 'content-type: application/json' + '\n\n'
++ '{'  + '\n' 
++ '\t"statusCode":409' + ',\n' 
++ '\t"message":"[[conflictMessage]]"' + ',\n' 
 + '\t"details":"[\\\\s\\\\S]*"' + '\n' 
 + '}'
 	
