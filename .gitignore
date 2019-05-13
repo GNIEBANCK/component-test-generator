@@ -1,2 +1,6 @@
 node_modules
 package-lock
+src/utils/scenarios.txt
+src/utils/testCases.txt
+requests
+responses
